@@ -39,11 +39,14 @@
       "sound/wind_low-pitch_lowish_clarinet.mp3",   
       "sound/wind_low-pitch_lowish_saxophone.mp3"
     ]
+    var sample_stimuli = jsPsych.randomization.sampleWithoutReplacement(stimuli, 16);
+    console.log(sample_stimuli);
+    
     for (let im = 0; im <16; im++){
     // Create a trail. 
      var pitchTrial = {
         type: jsPsychAudioButtonResponse,
-        stimulus: stimuli[im],
+        stimulus: sample_stimuli[im],
         choices: ['Low', 'High'],
         prompt: "<p>Is the pitch high or low?</p>"
       }
@@ -51,7 +54,7 @@
 
      var typeTrial = {
         type: jsPsychAudioButtonResponse,
-        stimulus: stimuli[im],
+        stimulus: sample_stimuli[im],
         choices: ['Wind', 'String'],
         prompt: "<p>Is it a wind instrument or a string instrument?</p>"
       }
